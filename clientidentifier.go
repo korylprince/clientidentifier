@@ -127,7 +127,14 @@ func main() {
 			if err != nil {
 				fmt.Println("Error setting ClientIdentifier:\n\t", err)
 			} else {
-				fmt.Println("ClientIdentifier:", identifier)
+				// We have to invalidate the plist cache on 10.9+
+				cmd := exec.Command("defaults", "read", plistPath)
+				err = cmd.Run()
+				if err != nil {
+					fmt.Println("Error invalidating Cache:\n\t", err)
+				} else {
+					fmt.Println("ClientIdentifier:", identifier)
+				}
 			}
 		}
 	default:
