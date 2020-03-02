@@ -1,0 +1,5 @@
+.	40755	0/0
+./usr	40755	0/0
+./usr/local	40755	0/0
+./usr/local/bin	40755	0/0
+./usr/local/bin/clientidentifier	100755	0/0	3135912	3428687488

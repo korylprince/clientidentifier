@@ -1,0 +1,11 @@
+{
+    "postinstall_action": "none",
+    "suppress_bundle_relocation": true,
+    "name": "clientidentifier-${version}.pkg",
+    "distribution_style": false,
+    "preserve_xattr": false,
+    "install_location": "/",
+    "version": "2.0",
+    "ownership": "recommended",
+    "identifier": "tk.unstac.clientidentifier"
+}
