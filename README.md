@@ -19,13 +19,13 @@ https://github.com/korylprince/clientidentifier/issues
 
 # Usage
 
-	$ clientidentifier -h
-	Usage: clientidentifier [OPTION...] [IDENTIFIER]
-
-		-h, --help	Display this help message
-
-	Running this program without any options will display the current ClientIdentifier.
-	The ClientIdentifier will be changed to IDENTIFIER if given.
+        $ clientidentifier -h
+        WARNING: the clientidentifier utility is deprecated. You should run `clientidentifier -c` to clear the ClientIdentifier
+        Usage: clientidentifier [OPTION...] [IDENTIFIER]
+	        -h, --help	Display this help message
+	        -c,	Clear the ClientIdentifier
+        Running this program without any options will display the current ClientIdentifier.
+        The ClientIdentifier will be changed to IDENTIFIER if given.
 
 # Copyright Information#
 
