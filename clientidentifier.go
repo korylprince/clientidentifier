@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/DHowett/go-plist"
+	"io"
 	"os"
 	"os/exec"
+
+	"howett.net/plist"
 )
 
 const plistPath = "/Library/Preferences/ManagedInstalls.plist"
 
-func GetClientIdentifier(filename string) (identifer string, err error) {
-
+func GetClientIdentifier(filename string) (string, error) {
 	f, err := os.Open(filename)
 	if err != nil {
 		return "", err
@@ -39,7 +40,6 @@ func GetClientIdentifier(filename string) (identifer string, err error) {
 }
 
 func SetClientIdentifier(filename, identifier string) error {
-
 	fi, err := os.Stat(filename)
 	if err != nil {
 		return err
@@ -61,7 +61,7 @@ func SetClientIdentifier(filename, identifier string) error {
 
 	config["ClientIdentifier"] = identifier
 
-	_, err = f.Seek(0, os.SEEK_SET)
+	_, err = f.Seek(0, io.SeekStart)
 	if err != nil {
 		return err
 	}
@@ -73,7 +73,7 @@ func SetClientIdentifier(filename, identifier string) error {
 		return err
 	}
 
-	l, err := f.Seek(0, os.SEEK_CUR)
+	l, err := f.Seek(0, io.SeekCurrent)
 	if err != nil {
 		return err
 	}
@@ -98,8 +98,8 @@ func elevate() {
 }
 
 func help() {
-	fmt.Println("Usage: clientidentifier [OPTION...] [IDENTIFIER]\n")
-	fmt.Println("\t-h, --help\tDisplay this help message\n")
+	fmt.Println("Usage: clientidentifier [OPTION...] [IDENTIFIER]")
+	fmt.Println("\t-h, --help\tDisplay this help message")
 	fmt.Println("Running this program without any options will display the current ClientIdentifier.")
 	fmt.Println("The ClientIdentifier will be changed to IDENTIFIER if given.")
 }
