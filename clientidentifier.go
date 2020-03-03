@@ -35,6 +35,9 @@ func GetClientIdentifier(filename string) (string, error) {
 	if !ok {
 		return "", fmt.Errorf("ClientIdentifier is not a valid string")
 	}
+	if i == "" {
+		return "<empty>", nil
+	}
 
 	return i, nil
 }
